@@ -1,0 +1,16 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      artifactId:
+        type: choice
+        options:
+          - hc-common-release
+
+jobs:
+  run:
+    uses: hiconic-os/hiconic.ci.workflows/.github/workflows/release.yaml@main
+    secrets: inherit
+    with:
+      artifactId: "[${{inputs.artifactId}}]"
